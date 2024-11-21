@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Función para cargar la lista de usuarios
 function loadUsers() {  
-    fetch('https://192.168.77.64:3000/users')  // Cambia la URL según tu API  
+    fetch('http://192.168.77.64:3000/users')  // Cambia la URL según tu API  
         .then(response => response.json())  
         .then(data => {  
             console.log(data);
@@ -42,7 +42,7 @@ function deleteUser(id) {
         return;
     }
 
-    fetch(`https://192.168.77.64:3000/users/${id}`, {
+    fetch(`http://192.168.77.64:3000/users/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -64,7 +64,7 @@ function deleteUser(id) {
 // Función para editar un usuario
 function editUser(id) {
     // Primero obtener los datos del usuario
-    fetch(`https://192.168.77.64:3000/users/${id}`)
+    fetch(`http://192.168.77.64:3000/users/${id}`)
         .then(response => response.json())
         .then(data => {
             if (data && data.user) {
@@ -90,7 +90,7 @@ function saveUserChanges() {
     
     const token = localStorage.getItem('authToken');
 
-    fetch(`https://192.168.77.64:3000/users/${id}`, {
+    fetch(`http://192.168.77.64:3000/users/${id}`, {
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`,

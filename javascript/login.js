@@ -8,7 +8,7 @@ function loginUser(event) {
     const email = document.getElementById('email').value;  
     const password = document.getElementById('password').value;  
 
-    fetch('https://192.168.77.64:3000/login', {  
+    fetch('http://192.168.77.64:3000/login', {  
         method: 'POST',  
         headers: { 'Content-Type': 'application/json' },  
         body: JSON.stringify({ email, password })  

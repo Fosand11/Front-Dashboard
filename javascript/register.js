@@ -1,44 +1,17 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const registerForm = document.getElementById('registerForm');
 
-    // Función para validar que la contraseña sea robusta
-    const isPasswordStrong = (password) => {
-        const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        return strongPasswordRegex.test(password);
-    };
-
-    // Función para validar el formato del correo electrónico
-    const isValidEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
     
         const submitButton = registerForm.querySelector('button[type="submit"]');
         submitButton.disabled = true; // Deshabilitar el botón para prevenir clics adicionales
     
-        // Obtener valores del formulario
-        const formData = Object.fromEntries(new FormData(registerForm));
-        const { email, password } = formData;
-
-        // Validar el formato del correo electrónico
-        if (!isValidEmail(email)) {
-            alert('Por favor, ingresa un correo electrónico válido.');
-            submitButton.disabled = false;
-            return;
-        }
-
-        // Validar la robustez de la contraseña
-        if (!isPasswordStrong(password)) {
-            alert('La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un carácter especial.');
-            submitButton.disabled = false;
-            return;
-        }
-
         try {
-            const response = await fetch('https://192.168.77.64:3000/register', {
+            // Convertir los datos del formulario en un objeto
+            const formData = Object.fromEntries(new FormData(registerForm));
+
+            const response = await fetch('http://192.168.77.64:3000/register', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json' 
@@ -61,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch (error) {
             console.error('Error durante el registro:', error);
-            alert('Ocurrió un error. Por favor, intenta de nuevo.');
+            // alert('Ocurrió un error. Por favor, intenta de nuevo.');
         } finally {
             submitButton.disabled = false; // Rehabilitar el botón al finalizar
         }        
