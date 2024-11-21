@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });  
 
 function loadInventory() {  
-    fetch('http://192.168.77.64:3000/inventory')  
+    fetch('https://192.168.77.64:3000/inventory')  
         .then(response => response.json())  
         .then(data => {  
             const inventoryTableBody = document.getElementById('inventoryTable').querySelector('tbody');  
@@ -31,7 +31,7 @@ function addInventory(event) {
     const quantity = document.getElementById('quantity').value;
     const price = document.getElementById('price').value;  
 
-    fetch('http://192.168.77.64:3000/inventory', {  
+    fetch('https://192.168.77.64:3000/inventory', {  
         method: 'POST',  
         headers: { 'Content-Type': 'application/json' },  
         body: JSON.stringify({ productName: productName, quantity: quantity, price: price })  
@@ -50,7 +50,7 @@ function updateInventory() {
     const quantity = document.getElementById('quantity').value;
     const price = document.getElementById('price').value;
 
-    fetch(`http://192.168.77.64:3000/inventory/${id}`, {
+    fetch(`https://192.168.77.64:3000/inventory/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ productName: productName, quantity: quantity, price: price })

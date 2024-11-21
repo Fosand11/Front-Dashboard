@@ -1,5 +1,5 @@
 document.getElementById('logoutButton').addEventListener('click', function() {  
-    fetch('http://192.168.77.64:3000/logout', {  
+    fetch('https://192.168.77.64:3000/logout', {  
         method: 'POST',  
         headers: { 'Content-Type': 'application/json' },  
     })  
