@@ -1,0 +1,82 @@
+
+body {  
+    font-family: Arial, sans-serif;  
+    margin: 0;  
+    padding: 0;  
+    background-color: #f0f4f8;  
+}  
+
+aside {  
+    width: 170px;   
+    float: left;  
+    background-color: #34495e; 
+    height: 100%; /* Ajustar altura al nuevo header */  
+    position: fixed;  
+    display: flex;  
+    flex-direction: column; /* Para colocar los elementos en columna */  
+    justify-content: space-between; /* Espacia los elementos y empuja el footer hacia abajo */  
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    border-right: 1px solid #ccc; 
+}  
+aside h2 {  
+    color: #ffffff;   
+    text-align: center;   
+    padding: 20px 0;  
+    margin: 0;  
+    border-bottom: 1px solid #000000;  
+}
+
+aside ul {  
+    list-style-type: none;   
+    padding: 15px;  
+    flex-grow: 1; /* Permite que la lista ocupe el espacio disponible */  
+}  
+
+aside ul li {  
+    margin-bottom: 10px;   
+}  
+
+aside ul li a {  
+    text-decoration: none;   
+    color: #ffffff;   
+    display: block;  
+    padding: 10px;   
+    border-radius: 4px;   
+}  
+
+aside ul li a:hover {  
+    background-color: #ffffff;  
+    color: #34495e;
+}  
+
+#logoutButton {  
+    padding: 10px 20px;   
+    background-color: #dc3545; /* Color rojo para el botón */  
+    color: white;   
+    border: none;   
+    border-radius: 4px;   
+    cursor: pointer;   
+    margin: 15px auto; /* Espacio alrededor y centrar el botón */  
+    transition: background-color 0.3s; /* Transición suave */  
+}  
+
+#logoutButton:hover {  
+    background-color: #c82333; /* Color más oscuro al pasar el mouse */  
+}
+
+main {  
+    margin-left: 220px;   
+    padding: 20px;   
+}  
+
+footer {  
+    background-color: #333;   
+    color: white;   
+    text-align: center;   
+    padding: 5px 0;   
+    margin-top: auto; /* Empuja el footer hacia abajo */  
+    width: 100%; /* Asegura que el footer ocupe todo el ancho del sidebar */  
+    position: relative; /* Cambiar a relativo para que se ajuste al sidebar */  
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */  
+    left: 0; /* Asegura que el footer esté alineado a la izquierda */  
+}
