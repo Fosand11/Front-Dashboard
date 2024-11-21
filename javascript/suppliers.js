@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });  
 
 function loadSuppliers() {  
-    fetch('http://localhost:3000/suppliers') // Cambia la URL según tu API  
+    fetch('http://localhost:3000/suppliers')   
         .then(response => response.json())  
         .then(data => {  
             const suppliersTableBody = document.getElementById('suppliersTable').querySelector('tbody');  
-            suppliersTableBody.innerHTML = ''; // Limpiar tabla antes de agregar datos  
+            suppliersTableBody.innerHTML = '';  
 
             console.log(data);
 

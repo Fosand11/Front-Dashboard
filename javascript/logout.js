@@ -7,7 +7,7 @@ document.getElementById('logoutButton').addEventListener('click', function() {
     .then(data => {  
         console.log(data.message); // 'Logout successful'  
         localStorage.removeItem('authToken'); // Limpia el token si lo estás usando  
-        window.location.href = '/login'; // Redirige al usuario  
+        window.location.href = '../login.html'; // Redirige al usuario  
     })  
     .catch(error => console.error('Error:', error));  
 });

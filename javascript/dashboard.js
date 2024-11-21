@@ -1,30 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {  
-    loadDashboardData();  
-});  
+function loadDashboardData() {
+    const authToken = localStorage.getItem('authToken'); // Asume que guardaste el token en localStorage
 
-function loadDashboardData() {  
-    fetch('http://localhost:3000/dashboard-data') // Cambia la URL según tu API  
-        .then(response => response.json())  
-        .then(data => {  
-            document.getElementById('totalProducts').innerText = data.totalProducts;  
-            document.getElementById('totalSuppliers').innerText = data.totalSuppliers;  
-            document.getElementById('totalUsers').innerText = data.totalUsers;  
-            loadRecentActivities(data.activities);  
-        })  
-        .catch(error => console.error('Error loading dashboard data:', error));  
-}  
+    console.log('authToken:', authToken); // Asegúrate de que el token existe
 
-function loadRecentActivities(activities) {  
-    const activitiesTableBody = document.getElementById('activitiesTable').querySelector('tbody');  
-    activitiesTableBody.innerHTML = ''; // Limpiar tabla antes de agregar datos  
+    if (!token) {
+        console.error('Token not found');
+        return;
+    }
 
-    activities.forEach(activity => {  
-        const row = document.createElement('tr');  
-        row.innerHTML = `  
-            <td>${activity.date}</td>  
-            <td>${activity.description}</td>  
-            <td>${activity.user}</td>  
-        `;  
-        activitiesTableBody.appendChild(row);  
-    });  
+    fetch('http://localhost:3000/dashboard-data', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        },
+    })
+        .then(response => {
+            console.log('Response status:', response.status);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json(); // Asegúrate de que esto devuelve JSON válido
+        })
+        .then(data => {
+            console.log('Raw response data:', data); // Asegúrate de que obtienes los datos esperados
+
+            const dashboardData = data.data;
+            console.log('Dashboard Data:', dashboardData);
+
+            document.getElementById('totalInventory').innerText = dashboardData.totalInventory;
+            document.getElementById('totalSuppliers').innerText = dashboardData.totalSuppliers;
+            document.getElementById('totalUsers').innerText = dashboardData.totalUsers;
+        })
+        .catch(error => console.error('Error loading dashboard data:', error));
 }
