@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });  
 
 function loadSuppliers() {  
-    fetch('http://localhost:3000/suppliers')   
+    fetch('http://192.168.77.64:3000/suppliers')   
         .then(response => response.json())  
         .then(data => {  
             const suppliersTableBody = document.getElementById('suppliersTable').querySelector('tbody');  
@@ -29,7 +29,7 @@ function addSupplier(event) {
     event.preventDefault();  
     const companyName = document.getElementById('companyName').value;
 
-    fetch('http://localhost:3000/suppliers', {  
+    fetch('http://192.168.77.64:3000/suppliers', {  
         method: 'POST',  
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('authToken')}` },
         body: JSON.stringify({ companyName: companyName })  
@@ -45,7 +45,7 @@ function addSupplier(event) {
 function searchSupplier() {  
     const searchName = document.getElementById('searchSupplier').value;  
 
-    fetch(`http://localhost:3000/suppliers?name=${searchName}`) // Cambia la URL según tu API  
+    fetch(`http://192.168.77.64:3000/suppliers?name=${searchName}`) // Cambia la URL según tu API  
         .then(response => response.json())  
         .then(data => {  
             const suppliersTableBody = document.getElementById('suppliersTable').querySelector('tbody');  

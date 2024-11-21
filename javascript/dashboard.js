@@ -8,7 +8,7 @@ function loadDashboardData() {
         return;
     }
 
-    fetch('http://localhost:3000/dashboard-data', {
+    fetch('http://192.168.77.64:3000/dashboard-data', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`,

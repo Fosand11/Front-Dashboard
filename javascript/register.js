@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Convertir los datos del formulario en un objeto
             const formData = Object.fromEntries(new FormData(registerForm));
 
-            const response = await fetch('http://localhost:3000/register', {
+            const response = await fetch('http://192.168.77.64:3000/register', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json' 
